@@ -3,8 +3,7 @@ this is a proyect of icc class -> the objective of the project is to complete "p
 
 - this gona be designed like a Web Application.
 
-members:
+members: 
+
   -Adrian Becerra(202010111)
   -
-  -
- .
