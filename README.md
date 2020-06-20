@@ -6,4 +6,4 @@ this is a proyect of icc class -> the objective of the project is to complete "p
 members: 
 
   -Adrian Becerra(202010111)
-  -
+  -Diego Cahua(202010117)
