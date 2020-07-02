@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+    {% block body %}
+        <form  action ="/add_contact" method="POST" >
+            <input type="text" name="name" placeholder="name">
+            <input type="text" name="place" placeholder="place">
+            <input type="text" name="city" placeholder="city">
+            <input type="text" name="direction" placeholder="direction">
+            <button type="submit" class="btn btn-primary btn-sm">
+                Guardar
+            </button>
+
+
+        </form>
+
+
+    {% endblock %}
