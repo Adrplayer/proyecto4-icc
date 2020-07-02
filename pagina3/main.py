@@ -26,6 +26,8 @@ if __name__ == '__main__':
 
     data.extract(con,f='lima')
 
+
+# ruta /add_contact --> agregar un nuevo objeto a la base de datos.
 @app.route('/add_contact', methods = ['POST'] )
 def add_contact():
     if request.method == 'POST':
