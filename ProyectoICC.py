@@ -1,0 +1,10 @@
+import sqlite3
+con=sqlite3.connect("mydatabase.db")
+n=input("Ingrese la ciudad de la locación del centro médico a agregar:")
+m=input("Ingrese el nombre del centro médico:")
+o=input("Ingrese la dirección exacta del centro médico:")
+print("Gracias por tu colaboración, así ayudarás a más peronas a encontrar un centro médico.")
+entities = (n, m , o)
+cursorObj=con.cursor()
+cursorObj.execute("INSERT INTO centrosmedicos(Ciudad, Nombre, Dirección) VALUES(?, ? ,?)", entities)
+con.commit()
