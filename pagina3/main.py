@@ -35,7 +35,7 @@ def add_contact():
         place = request.form['place']
         city = request.form['city']
         direction = request.form['direction']
-        cur = mysqlp.connection.cursor()
+        cur = con.cursor()
         cur.execute('INSERT INTO contacto (name , place , city, direction) VALUES (%s, %s, %s, %s)',[name ,place ,city ,direction])
-        mysqlp.connection.commit()
+        con.commit()
         return redirect(url_for('Home'))
