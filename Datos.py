@@ -45,4 +45,35 @@ def add_Centro():
     cur.execute('''INSERT INTO centrosMedicos(Nombre, Ciudad, Dirección) VALUES(?, ?, ?)''', Datos)
     con.commit()
     print("Dato agregado")
-add_Medico()
+def filter_Medico(Centro = "all",Especialidad = "all"):
+    cur = con.cursor()
+    cur.execute('''SELECT * FROM Doctores''')
+    data = cur.fetchall()
+    Datos = []
+    if Centro == "all" and Especialidad == "all":
+        for i in data:
+            Datos.append(i)
+    elif Especialidad == "all":
+        for i in data:
+            if i[4] == Centro:
+                Datos.append(i)
+    elif Centro == "all":
+        for i in data:
+            if i[3] == Especialidad:
+                Datos.append(i)
+    else:
+        for i in data:
+            if i[3] == Especialidad and i[4] == Centro:
+                Datos.append(i)
+
+    print(Datos)
+def filter_Centro(Ciudad):
+    cur = con.cursor()
+    cur.execute('''SELECT * FROM centrosMedicos''')
+    data = cur.fetchall()
+    Datos = []
+    for i in data:
+        if i[1] == Ciudad:
+            Datos.append(i)
+    print(Datos)
+filter_Medico()
