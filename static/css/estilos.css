@@ -22,13 +22,13 @@ p{
     height: 100vh;
 }
 .fondo{
-    background: url('../img/fondo 1.jpg');
+    background: url('/static/img/fondo 1.jpg');
     height: 100vh;
     background-position: center;
     background-size: cover;
 }
 .blanco{
-    background: url('../img/fondo\ 2.jpg');
+    background: url('/static/img/fondo\ 2.jpg');
     height: 100vh;
     background-position: center;
     background-size: cover;
@@ -50,7 +50,7 @@ p{
     font-family: 'Caveat', cursive;
     font-size: 2rem;
     color:  #000000;
-    
+
 
 }
 .btn-primary{
@@ -58,7 +58,7 @@ p{
     font-family: 'Caveat', cursive;
     font-size: 2rem;
     color:  #ffffff;
-    
+
 }
 .btn{
     border: none;
