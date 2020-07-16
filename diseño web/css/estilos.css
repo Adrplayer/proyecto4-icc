@@ -1,0 +1,82 @@
+body{
+    font-family: 'Cabin', sans-serif;
+}
+h1, h2, h3, h4, h5, h6, p{
+    font-family: 'Cabin', sans-serif;
+}
+h1{
+    font-size: 3rem;
+    font-weight: 700;
+}
+h4{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+p{
+    font-weight: 400;
+}
+/*fondos*/
+
+.fondo2{
+    background-color: rgba(0,0,0,.5);
+    height: 100vh;
+}
+.fondo{
+    background: url('../img/fondo 1.jpg');
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+.blanco{
+    background: url('../img/fondo\ 2.jpg');
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+
+}
+.pb-5{
+    font-family: 'Caveat', cursive;
+    font-size: 3em;
+    font-weight: 700;
+}
+.bg-primary{
+    background-color:  #22abaf !important;
+}
+.bg-info{
+    background-color:  #67d5dd  !important ;
+}
+.btn-info{
+    background-color: #67d5dd;
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color:  #000000;
+    
+
+}
+.btn-primary{
+    background-color: #22abaf;
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color:  #ffffff;
+    
+}
+.btn{
+    border: none;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.us{
+    font-family: 'Caveat', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #0a9196;
+}
+.nombre{
+    font-family: 'Cabin', sans-serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+
+}
