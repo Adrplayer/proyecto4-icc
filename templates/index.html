@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@
             <h1 class="display-2 text-white">Bienvenidos a Medi Search </h1>
             <p><h4 class="text-white"> Aquí encontraran una gran cantidad de  </h4></p>
             <div>
-                <a href="About.html" class="btn btn-primary">Leer más</a>
+                <a href="/About" class="btn btn-primary">Leer más</a>
             </div>
 
         </div>
@@ -61,22 +61,22 @@
         <div class="row">
             <div class="col-4">
                 <h3 class="pb-5  ">Medicos</h3>
-                <form class="form-horizontal" >
+                <form class="form-horizontal" action="/add_Medico" method="POST">
                     <div class="form-group row">
                         <label for="">Nombre:</label>
-                        <input type="text" placeholder="Escribe el nombre aquí" class="form-control">
+                        <input type="text" name="Nombre" placeholder="Escribe el nombre aquí" class="form-control">
                     </div>
                     <div class="form-group row ">
                         <label for="">Apellido:</label>
-                        <input type="text" placeholder="Escribe el apellido aquí" class="form-control">
+                        <input type="text" name="Apellido" placeholder="Escribe el apellido aquí" class="form-control">
                     </div>
                     <div class="form-group row">
                         <label for="">Especialidad:</label>
-                        <input type="Especialidad" placeholder="Escribe tu especialidad aquí" class="form-control">
+                        <input type="text" name="Especialidad" placeholder="Escribe tu especialidad aquí" class="form-control">
                     </div>
                     <div class="form-group row">
                         <label for="">Centro de atención:</label>
-                        <input type="Centro" placeholder="Escribe tu centro aquí" class="form-control">
+                        <input type="text" name="Centro" placeholder="Escribe tu centro aquí" class="form-control">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-info" type="submit">Enviar</button>
@@ -86,22 +86,18 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <h3 class="pb-5  ">Centros Medicos</h3>
-                <form class="form-horizontal" >
+                <form class="form-horizontal" action="/add_Centro" method="POST" >
                     <div class="form-group row">
                         <label for="">Nombre:</label>
-                        <input type="text" placeholder="Escribe el nombre aquí" class="form-control">
+                        <input type="text" name="Nombre" placeholder="Escribe el nombre aquí" class="form-control">
                     </div>
                     <div class="form-group row ">
                         <label for="">Ciudad:</label>
-                        <input type="text" placeholder="Escribe la ciudad aquí" class="form-control">
+                        <input type="text" name="Ciudad" placeholder="Escribe la ciudad aquí" class="form-control">
                     </div>
                     <div class="form-group row">
-                        <label for="">Email:</label>
-                        <input type="email" placeholder="Escribe tu email aquí" class="form-control">
-                    </div>
-                    <div class="form-group row">
-                        <label for="">Número:</label>
-                        <input type="text" placeholder="Escribe tu número aquí" class="form-control">
+                        <label for="">Dirección:</label>
+                        <input type="text" name="Dirección" placeholder="Escribe la Dirección aquí" class="form-control">
                     </div>
                     <div class="form-group">
                         <button class="btn btn-info" type="submit">Enviar</button>
@@ -109,7 +105,39 @@
                 </form>
 
             </div>
-        </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            {% if message == "1" %}
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Centro medico agregado</h4>
+              <p>Gracias por hacer que nuestra base de datos sea más grande, si deseas ver nuestra base de datos, esta esta en las siguientes pestañas</p>
+              <hr>
+              <p class="mb-0">Nuestra base de datos puede ser filtrada por cuidades, centros de atención y especialidad medica </p>
+            </div>
+            {% endif %}
+            {% if message == "2" %}
+            <div class="alert alert-warning" role="alert">
+              <h4 class="alert-heading">Personal medico agregado</h4>
+              <p>El Personal medico que nos proporcionó pertenece a un centro de atención desconocido por nuestra base de datos</p>
+              <hr>
+              <p class="mb-0">De ser posible por usted, ingrese los datos del centro medico en cuestión</p>
+            </div>
+            {% endif %}
+            {% if message == "3" %}
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Personal medico agregado</h4>
+              <p>Gracias por hacer que nuestra base de datos sea más grande, si deseas ver nuestra base de datos, esta esta en las siguientes pestañas</p>
+              <hr>
+              <p class="mb-0">Nuestra base de datos puede ser filtrada por cuidades, centros de atención y especialidad medica </p>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <!DOCTYPE html>
+          </div>
+
     </section>
 
 

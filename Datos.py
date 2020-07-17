@@ -4,51 +4,46 @@ from sqlite3 import Error
 
 app = Flask(__name__)
 
-def sql_connection():
-    try:
-        con = sqlite3.connect('Datos-Medicos')
+app.secret_key = 'mysecretkey'
 
-        print("Connection is established to Database = 'Datos-Medicos' ")
-
-    except Error:
-        print(Error)
-
-    return con
-
-con = sql_connection()
-
-
+@app.route('/add_Medico',methods = ['POST'])
 def add_Medico():
-    Nombre = input("Nombre del Médico: \n")
-    Apellido = input("Apellido del Médico: \n")
-    Especialidad = input("Especialidad: \n")
-    Centro = input("Centro medico en el cual trabaja: \n")
-    cur = con.cursor()
-    cur.execute("SELECT Nombre FROM centrosMedicos")
-    centros = cur.fetchall()
-    Datos = (Nombre,Apellido,Especialidad,Centro)
-    cur.execute('''INSERT INTO Doctores(Nombre, Apellido, Especialidad, Centro) VALUES(?,?,?,?)''',Datos)
-    Centros = []
-    for i in centros:
-        Centros.append(i[0])
-    print(Centros)
-    if Centro in Centros:
-        print("centro de atención ya enlistado")
-    else:
-        print("centro de atención no enlistado")
-        add_Centro()
-
+    with sqlite3.connect('Datos-Medicos') as con:
+        Nombre = request.form['Nombre']
+        Apellido = request.form['Apellido']
+        Especialidad = request.form['Especialidad']
+        Centro = request.form['Centro']
+        cur = con.cursor()
+        cur.execute("SELECT Nombre FROM centrosMedicos")
+        centros = cur.fetchall()
+        Datos = (Nombre,Apellido,Especialidad,Centro)
+        cur.execute('''INSERT INTO Doctores(Nombre, Apellido, Especialidad, Centro) VALUES(?,?,?,?)''',Datos)
+        Centros = []
+        for i in centros:
+            Centros.append(i[0])
+        print(Centros)
+        if Centro in Centros:
+            flash("3")
+            return redirect(url_for('Home'))
+        else:
+            flash("2")
+            return redirect(url_for('Home'))
+@app.route('/add_Centro',methods = ['POST'])
 def add_Centro():
-    Nombre = input("Nombre del centro Medico: \n")
-    Ciudad = input("Ciudad: \n")
-    Dirección = input("Dirección: \n")
-    cur = con.cursor()
-    Datos = (Nombre, Ciudad, Dirección)
-    cur.execute('''INSERT INTO centrosMedicos(Nombre, Ciudad, Dirección) VALUES(?, ?, ?)''', Datos)
-    con.commit()
-    print("Dato agregado")
+    with sqlite3.connect('Datos-Medicos') as con:
+        if request.method == 'POST':
+            Nombre = request.form['Nombre']
+            Ciudad = request.form['Ciudad']
+            Dirección = request.form['Dirección']
+            cur = con.cursor()
+            Datos = (Nombre, Ciudad, Dirección)
+            cur.execute('''INSERT INTO centrosMedicos(Nombre, Ciudad, Dirección) VALUES(?, ?, ?)''', Datos)
+            con.commit()
+            flash("1")
+            return redirect(url_for('Home'))
 
-def filter_Medico(Centro = "all",Especialidad = "all"):
+
+def show_Medicos(Centro = "all",Especialidad = "all"):
     cur = con.cursor()
     cur.execute('''SELECT * FROM Doctores''')
     data = cur.fetchall()
@@ -71,7 +66,7 @@ def filter_Medico(Centro = "all",Especialidad = "all"):
 
     print(Datos)
 
-def filter_Centro(Ciudad):
+def show_Centros(Ciudad):
     cur = con.cursor()
     cur.execute('''SELECT * FROM centrosMedicos''')
     data = cur.fetchall()
