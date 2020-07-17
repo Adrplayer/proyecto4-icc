@@ -12,3 +12,5 @@ members:
   -Adrian Becerra(202010111)
   -Diego Cahua(202010117)
   -Luciano Bacigalupo(202010055)
+  -Alexander Astorga (202010105)
+
