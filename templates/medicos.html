@@ -49,7 +49,16 @@
     <div class="container py-5">
 		<div class="row">
 			<div  class="col-md-6 ">
-				<h1 class="display-4 us">Doctores</h1>
+				<h1 class="display-4 us">Doctores <h3>
+          {% if Especialidad != "all" or Centro != "all" %}
+          <a href="../all/all">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" d="M12.83 6.706a5 5 0 0 0-7.103-3.16.5.5 0 1 1-.454-.892A6 6 0 1 1 2.545 5.5a.5.5 0 1 1 .91.417 5 5 0 1 0 9.375.789z"/>
+<path fill-rule="evenodd" d="M7.854.146a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708l2.5 2.5a.5.5 0 1 0 .708-.708L5.707 3 7.854.854a.5.5 0 0 0 0-.708z"/>
+</svg>
+        </a> </h3>
+          {% endif %}
+       </h1>
       </div>
             <div class="col-md-2"></div>
             <div  class="col-md-4 d-none d-md-block"></div>
@@ -59,8 +68,23 @@
         <tr>
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
-          <th scope="col">Especialidad</th>
-          <th scope="col">Centro de atención</th>
+          <th scope="col">Especialidad
+            {% if Especialidad != "all" %}
+            <a href="../all/{{Centro}}">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="white" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 0 0-7.103-3.16.5.5 0 1 1-.454-.892A6 6 0 1 1 2.545 5.5a.5.5 0 1 1 .91.417 5 5 0 1 0 9.375.789z"/>
+  <path fill-rule="evenodd" d="M7.854.146a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708l2.5 2.5a.5.5 0 1 0 .708-.708L5.707 3 7.854.854a.5.5 0 0 0 0-.708z"/>
+</svg></a>
+            {% endif %}
+</th>
+          <th scope="col">Centro de atención
+            {% if Centro != "all" %}
+            <a href="../{{Especialidad}}/all">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="white" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.83 6.706a5 5 0 0 0-7.103-3.16.5.5 0 1 1-.454-.892A6 6 0 1 1 2.545 5.5a.5.5 0 1 1 .91.417 5 5 0 1 0 9.375.789z"/>
+  <path fill-rule="evenodd" d="M7.854.146a.5.5 0 0 0-.708 0l-2.5 2.5a.5.5 0 0 0 0 .708l2.5 2.5a.5.5 0 1 0 .708-.708L5.707 3 7.854.854a.5.5 0 0 0 0-.708z"/>
+</svg></a>
+          {% endif %}
         </tr>
       </thead>
       <tbody>
@@ -68,8 +92,8 @@
         <tr>
           <td>{{ x.1 }}</td>
           <td>{{ x.2 }}</td>
-          <td>{{ x.3 }}</td>
-          <td>{{ x.4 }}</td>
+          <td><a href="../{{ x.3 }}/{{Centro}}">{{ x.3 }}</a></td>
+          <td><a href="{{ x.4 }}">{{ x.4 }}</a></td>
         </tr>
         {% endfor %}
       </tbody>
@@ -125,8 +149,8 @@
 
 
 
-<script src="static/js/jquery-3.5.1.slim.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-3.5.1.slim.min.js"></script>
+<script src="../static/js/popper.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
 </body>
 </html>

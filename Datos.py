@@ -75,7 +75,7 @@ def show_Medicos(Centro = "all",Especialidad = "all"):
                 if i[3] == Especialidad and i[4] == Centro:
                     Datos.append(i)
 
-        return render_template('medicos.html',Medicos = Datos)
+        return render_template('medicos.html',Medicos = Datos,Centro = Centro,Especialidad = Especialidad)
 @app.route('/Centros/<string:Ciudad>')
 def show_Centros(Ciudad = "all"):
     with sqlite3.connect('Datos-Medicos') as con:
@@ -90,7 +90,7 @@ def show_Centros(Ciudad = "all"):
             for i in data:
                 if i[1] == Ciudad:
                     Datos.append(i)
-        return render_template('Centros.html',Centros = Datos)
+        return render_template('Centros.html',Centros = Datos,Ciudad = Ciudad)
 
 @app.route('/About')
 def About():
