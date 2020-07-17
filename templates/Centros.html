@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie-edge">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/estilos.css">
+    <link rel="stylesheet" href="../static/css/estilos.css">
     <title>Document</title>
 
 
@@ -27,10 +27,10 @@
                       <a href="/" class="nav-link " style="color: white;">Home</a>
                   </li>
                   <li class="nav-item ">
-                    <a href="/Medicos" class="nav-link" style="color: white;">Medicos</a>
+                    <a href="/Medicos/all/all" class="nav-link" style="color: white;">Medicos</a>
                   </li>
                   <li class="nav-item ">
-                    <a href="/Centros" class="nav-link" style="color: white;">Centros de atención</a>
+                    <a href="/Centros/all" class="nav-link" style="color: white;">Centros de atención</a>
                   </li>
                   <li class="nav-item ">
                       <a href="/About" class="nav-link" style="color: white;">About</a>
@@ -46,6 +46,37 @@
 
     <div class="container-fluid py-5">
     </div>
+    <div class="container py-5">
+		<div class="row">
+			<div  class="col-md-6 ">
+				<h1 class="display-4 us">Lista de centros medicos</h1>
+      </div>
+            <div class="col-md-2"></div>
+            <div  class="col-md-4 d-none d-md-block"></div>
+        </div>
+        <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Ciudad</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Dirección</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in Centros%}
+        <tr>
+          <td>{{ x.1 }}</td>
+          <td>{{ x.2 }}</td>
+          <td>{{ x.3 }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+      <br>
+  </div>
 
 
 
@@ -92,8 +123,8 @@
 
 
 
-<script src="js/jquery-3.5.1.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="static/js/jquery-3.5.1.slim.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
 </body>
 </html>

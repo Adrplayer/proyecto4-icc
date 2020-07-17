@@ -28,6 +28,7 @@ def add_Medico():
         else:
             flash("2")
             return redirect(url_for('Home'))
+
 @app.route('/add_Centro',methods = ['POST'])
 def add_Centro():
     with sqlite3.connect('Datos-Medicos') as con:
@@ -43,52 +44,53 @@ def add_Centro():
             return redirect(url_for('Home'))
 
 
-def show_Medicos(Centro = "all",Especialidad = "all"):
-    cur = con.cursor()
-    cur.execute('''SELECT * FROM Doctores''')
-    data = cur.fetchall()
-    Datos = []
-    if Centro == "all" and Especialidad == "all":
-        for i in data:
-            Datos.append(i)
-    elif Especialidad == "all":
-        for i in data:
-            if i[4] == Centro:
-                Datos.append(i)
-    elif Centro == "all":
-        for i in data:
-            if i[3] == Especialidad:
-                Datos.append(i)
-    else:
-        for i in data:
-            if i[3] == Especialidad and i[4] == Centro:
-                Datos.append(i)
 
-    print(Datos)
 
-def show_Centros(Ciudad):
-    cur = con.cursor()
-    cur.execute('''SELECT * FROM centrosMedicos''')
-    data = cur.fetchall()
-    Datos = []
-    for i in data:
-        if i[1] == Ciudad:
-            Datos.append(i)
-    print(Datos)
 
 @app.route('/')
 def Home():
     return render_template('index.html')
 
 
-@app.route('/Medicos')
-def Medicos():
-    return render_template('medicos.html')
+@app.route('/Medicos/<string:Especialidad>/<string:Centro>')
+def show_Medicos(Centro = "all",Especialidad = "all"):
+    with sqlite3.connect('Datos-Medicos') as con:
+        cur = con.cursor()
+        cur.execute('''SELECT * FROM Doctores''')
+        data = cur.fetchall()
+        Datos = []
+        if Centro == "all" and Especialidad == "all":
+            for i in data:
+                Datos.append(i)
+        elif Especialidad == "all":
+            for i in data:
+                if i[4] == Centro:
+                    Datos.append(i)
+        elif Centro == "all":
+            for i in data:
+                if i[3] == Especialidad:
+                    Datos.append(i)
+        else:
+            for i in data:
+                if i[3] == Especialidad and i[4] == Centro:
+                    Datos.append(i)
 
-
-@app.route('/Centros')
-def Centros():
-    return render_template('Centros.html')
+        return render_template('medicos.html',Medicos = Datos)
+@app.route('/Centros/<string:Ciudad>')
+def show_Centros(Ciudad = "all"):
+    with sqlite3.connect('Datos-Medicos') as con:
+        cur = con.cursor()
+        cur.execute('''SELECT * FROM centrosMedicos''')
+        data = cur.fetchall()
+        Datos = []
+        if Ciudad == "all":
+            for i in data:
+                Datos.append(i)
+        else:
+            for i in data:
+                if i[1] == Ciudad:
+                    Datos.append(i)
+        return render_template('Centros.html',Centros = Datos)
 
 @app.route('/About')
 def About():
